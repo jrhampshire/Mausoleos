@@ -1,0 +1,163 @@
+﻿body {
+font-family:Arial;
+font-size: 12px;
+line-height:100%;
+padding: 0px;
+width: 900px;
+height:1050px;
+}
+
+footer {
+    border:1px solid lightgray;
+    border-radius:10px;
+    text-align:center;
+}
+
+span {
+    font-weight:normal;
+}
+
+#logo, #datos-emisor, #generales, #receptor, #forma-pago, #tot-letra-contenedor, #totales, 
+#CBB, #cadena-original, #serie-hora-sat, #cadena-original {
+    display:inline-block;
+    margin:10px 10px;
+    vertical-align:top;
+}
+
+#datos-emisor {
+    width:43%;
+    line-height:70%;
+    text-align:center;
+}
+
+#generales {
+    width:30%;
+    text-align:center;
+    line-height: 65%;
+}
+
+#logo {
+    width:20%;
+    text-align:left;
+}
+
+#generales, #receptor, #forma-pago, #partidas, #tot-letra, #totales, #serie-hora-sat {
+    border:1px solid Gray;
+    border-radius: 10px;
+    margin:10px 0px;
+    padding: 0px 7px;
+}
+
+#receptor, #forma-pago {
+    width:66%;
+    height:10em;
+}
+
+#forma-pago {
+
+    width:30%;
+}
+
+#tabla-enc {
+    background:rgba(193, 233, 249,0.5);
+    border-radius: 10px;
+}
+#tabla-enc2 {
+    background:rgba(193, 233, 249,0.5);
+    border-radius: 10px;
+}
+
+#tot-letra-contenedor {
+    width:70%;
+}
+
+#totales {
+    width:25%;
+}
+
+#datos-pac {
+    max-width:70%;
+}
+
+#datos-pac2 {
+    width:97%;
+    height:170px;
+}
+
+#CBB {
+    height:150px;
+    margin:0px;
+    margin-left:3px;
+    margin-right:10px;
+    width:150px;
+}
+
+#cadena-original {
+    width:100%;
+}
+
+#datos-pac2, #datos-pac  {
+    word-wrap: break-word;  
+}
+
+#t_totales td {
+    font-size:1.3em;
+    font-weight:bold;
+    line-height:1.2em;
+}
+
+.datatable {    
+    /*border: 1px solid gray;*/
+    border-collapse: collapse;
+    margin-bottom:10px;
+    width: 100%;
+}
+        
+.datatable td {
+    border: 1px 0px solid gray;
+    padding: 0.3em, 0px;
+}
+
+.datatable th {
+    font-weight: bold;
+    padding: 0.3em;
+}
+
+.fondo-relleno {
+    background: rgb(136, 171, 188);
+    border-radius:7px;
+    color:white;
+    font-weight:bolder;
+    height:1em;
+    padding-top:7px;
+    text-align:center;
+    vertical-align:central;
+}
+
+.negritas {
+    font-weight:bolder;
+}
+
+.separador {
+    background: rgb(136, 171, 188);
+    border-radius:7px;
+    height:10px;
+    margin:10px 0px;
+}
+
+.text-normal {
+    font-weight:normal;
+}
+
+.texto-centrado {
+    text-align:center;
+}
+
+.texto-right {
+    padding:0px 10px;
+    text-align:right;
+}
+
+.content-center {
+    vertical-align:central;
+}

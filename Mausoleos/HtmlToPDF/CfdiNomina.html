@@ -1,0 +1,402 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>CFDI Nómina</title>
+    <!--<link href="estilos.css" rel="stylesheet" type="text/css" />-->
+    <style type="text/css">
+        body {
+            background-color: white;
+            font-family: Calibri;
+            font-size: 14px;
+            margin: 0px;
+            width: 1000px;
+        }
+
+        footer {
+            background: rgba(203, 238, 250, 0.59);
+            border-radius: 10px;
+            font: bold 16px Arial;
+            margin: 20px 5px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        header {
+            background-color: rgba(203, 238, 250, 0.59);
+            font-family: Arial;
+            line-height: 8px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 12px;
+            margin: 10px 10px 0px 10px;
+            text-align: center;
+        }
+
+        h4 {
+            margin: 0px;
+            text-align: center;
+        }
+
+        p {
+            line-height: 7px;
+        }
+
+        table, tr td {
+            vertical-align: central;
+        }
+
+        #encabezado-left, #encabezado-right, #encabezado-left2 {
+            display: inline-block;
+            line-height: 7px;
+            text-align: left;
+            width: auto;
+        }
+
+        #encabezado-left2 {
+            font-size: 12px;
+            width: 600px;
+        }
+
+        #encabezado-right {
+            text-align: right;
+            width: 235px;
+        }
+
+        #generales-contenedor {
+            height: auto;
+            width: 100%;
+        }
+
+        #generales1, #generales2 {
+            background-color: rgb(245, 245, 249);
+            border: solid 1px gray;
+            border-radius: 10px;
+            display: inline-block;
+            height: 230px;
+            margin: 8px 5px;
+            width: 483px;
+            text-align: center;
+        }
+
+        #generales1, #generales2 {
+            box-shadow: 5px 5px 10px rgba(103, 109, 112, 0.50);
+        }
+
+        #det-gral1, #det-gral2, #det-gral3, #det-gral4 {
+            display: inline-block;
+            text-align: left;
+            width: 45%;
+        }
+
+        #det-gral2, #det-gral4 {
+            text-align: right;
+        }
+
+        #empleador, #empleado, #percepciones, #deducciones {
+            display: inline-block;
+            background-color: white;
+            border: solid 2px black;
+            border-radius: 10px;
+            height: 140px;
+            margin: 0px 5px 5px 0px;
+            width: 483px;
+        }
+
+        #percepciones, #deducciones {
+            border-radius: 10px;
+            display: inline-block;
+            height: auto;
+            min-height: 200px;
+        }
+
+        #empleador, #percepciones, #generales1 {
+            margin-left: 10px;
+        }
+
+        #total-percepciones, #total-deducciones {
+            border: solid 2px black;
+            border-radius: 10px;
+            display: inline-block;
+            height: auto;
+            margin: 0px;
+            text-align: center;
+            width: 48.3%;
+        }
+
+        #total-percepciones {
+            margin-left: 10px;
+        }
+
+            #total-percepciones td, #total-deducciones td {
+                font-size: 1.3em;
+                font-weight: bold;
+            }
+
+        #total-gral, #cbb {
+            display: inline-block;
+            margin-left: 10px;
+            margin-top: 10px;
+        }
+
+        #total-gral, #leyenda, #impo-letra, #total-pagar {
+            display: inline-block;
+            margin-left: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        #total-gral {
+            width: 700px;
+        }
+
+        #total-pagar, #UUID {
+            border: 1.5px solid black;
+            border-radius: 10px;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            width: 100%;
+        }
+
+        #cbb {
+            width: 180px;
+            height: 180px;
+        }
+
+        #UUID {
+            border: solid 1px gray;
+            font-size: 12px;
+            margin: 10px;
+            text-align: center;
+            vertical-align: central;
+            width: 96%;
+        }
+
+        .contenedor-izq {
+            margin-left: 10px;
+            text-align: left;
+        }
+
+        .datatable {
+            border: 1px solid gray;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .datatable td {
+            border: 1px solid gray;
+            padding: 0.3em, 0px;
+        }
+
+        .datatable th {
+            border: 1px solid gray;
+            font-weight: bold;
+            padding: 0.3em;
+        }
+
+        .texto-blanco {
+            color: white;
+        }
+
+        .texto-centrado {
+            line-height:110%;
+            text-align: center;
+            text-wrap:normal;
+            vertical-align: central;
+        }
+
+        .text-bold {
+            font-weight:bolder;
+        } 
+
+        .texto-right {
+            padding-right: 5px;
+            text-align: right;
+            vertical-align: central;
+        }
+
+        .text-wrap {
+            text-wrap:normal;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h2 id="encabezado-left">CFDI</h2>
+        <p id="encabezado-left2">Comprobante Fiscal Digital a través de Internet</p>
+        <h3 id="encabezado-right">RECIBO DE NÓMINA</h3>
+    </header>
+    <br/>
+    <section id="generales-contenedor">
+        <section id="generales1">
+            <section id="det-gral1">
+                <p>Registro Patronal</p>
+                <p>Número de empleado</p>
+                <p>Tipo de régimen</p>
+                <p>Departamento</p>
+                <p>Puesto</p>
+                <p>Riesgo de puesto</p>
+                <p>Tipo de contrato</p>
+                <p>Tipo de jornada</p>
+                <p>Antigüedad</p>
+            </section>
+            <section id="det-gral2">
+                <p>$Registro Patronal$</p>
+                <p>$Número de empleado$</p>
+                <p>$Tipo de régimen$</p>
+                <p>$Departamento$</p>
+                <p>$Puesto$</p>
+                <p>$Riesgo de puesto$</p>
+                <p>$Tipo de contrato$</p>
+                <p>$Tipo de jornada$</p>
+                <p>$Antigüedad$</p>
+            </section>
+        </section>
+        <section id="generales2">
+            <section id="det-gral3">
+                <p>Inicio de la relación laboral</p>
+                <p>Periodo de pago</p>
+                <p>SalarioBaseCotApor</p>
+                <p>Salario Diario Integrado</p>
+                <p>Fecha de pago</p>
+                <p>Fecha inicial de pago</p>
+                <p>Fecha final de pago</p>
+                <p>Número de días pagados</p>
+                <p class="texto-blanco">.</p>
+            </section>
+            <section id="det-gral4">
+                <p>$Inicio de la relación laboral$</p>
+                <p>$Periodo de pago$</p>
+                <p>$SalarioBaseCotApor$</p>
+                <p>$Salario Diario Integrado$</p>
+                <p>$Fecha de pago$</p>
+                <p>$Fecha inicial de pago$</p>
+                <p>$Fecha final de pago$</p>
+                <p>$Número de días pagados$</p>
+                <p class="texto-blanco">.</p>
+            </section>
+        </section>
+    </section>
+    <section id="contenedor-emp">
+        <section id="empleador">
+            <h4>Patrón</h4>
+            <section class="contenedor-izq">
+                <p>$PatronRFC$ &nbsp; $RazonSocial$</p>
+                <p>$Calle$ $Num$</p>
+                <p>COL. $Colonia$, $Municipio$, C.P. $CP$</p>
+                <p>$LugarExped$</p>
+            </section>
+        </section>
+        <section id="empleado">
+            <h4>Empleado</h4>
+            <section class="contenedor-izq">
+                <p>$EmpRFC$ &nbsp; $EmpNombre$</p>
+                <p>C.U.R.P.: $CURP$</p>
+                <p>NSS: &nbsp; $EmpNSS$</p>
+                <p style="color:white">RENGLON EN BLANCO</p>
+            </section>
+        </section>
+    </section>
+    <section id="percepciones">
+        <h4>Percepciones</h4>
+        <table class="datatable">
+            <tr>
+                <th width="50px">Tipo de Percepcion</th>
+                <th width="50px">Clave</th>
+                <th>Concepto</th>
+                <th width="60px">Importe Exento</th>
+                <th width="60px">Importe Gravado</th>
+            </tr>
+            $Percepciones$            
+        </table>
+        <section id="hrs-ext">
+            <table class="datatable">
+                <tr>
+                    <th width="65px">Dias</th>
+                    <th width="50px">Hrs Ext</th>
+                    <th>Tipo de Horas</th>
+                    <th width="60px">Importe Pagado</th>
+                </tr>
+                <tr>
+                    <td class="texto-centrado">$Dias$</td>
+                    <td class="texto-centrado">$Hrs Ext$</td>
+                    <td>$Tipo de Horas$</td>
+                    <td class="texto-right">$Importe Pagado$</td>
+                </tr>
+            </table>
+        </section>
+    </section>
+    <section id="deducciones">
+        <h4>Deducciones</h4>
+        <table class="datatable" >
+            <tr>
+                <th width="70px">Tipo de Deduccion</th>
+                <th width="69.5px">Clave</th>
+                <th>Concepto</th>
+                <th width="60px">Importe Exento</th>
+                <th width="60px">Importe Gravado</th>
+            </tr>
+            $Deducciones$
+        </table>
+        <section id="incapacidades">
+            <table class="datatable">
+                <tr>
+                    <th width="70px">Tipo de Incapacidad</th>
+                    <th width="68px">Dias de Incapacidad</th>
+                    <th>Descuento</th>
+                </tr>
+                <tr>
+                    <td class="texto-centrado">$Tipo de Incapacidad$</td>
+                    <td class="texto-centrado">$Dias de Incapacidad$</td>
+                    <td class="texto-right">$Descuento$</td>
+                </tr>
+            </table>
+        </section>
+    </section>
+    <section id="total-percepciones">
+        <table>
+            <tr>
+                <td width="325" align="left">Suma Percepciones</td>
+                <td width="60" align="right">$PerTotExento$</td>
+                <td width="80" align="right">$PerTotGravado$</td>
+            </tr>
+        </table>
+    </section>
+    <section id="total-deducciones">
+        <table>
+            <tr>
+                <td width="325" align="left">Suma Deducciones</td>
+                <td width="60" align="right">$DedTotExento$</td>
+                <td width="80" align="right">$DedTotGravado$</td>
+            </tr>
+        </table>
+    </section>
+    <section id="cbb">
+        <img height="160" src="$CBB$" width="160">
+    </section>
+    <section id="total-gral">
+        <div style="font-weight:bold; font-size:14px" id="leyenda">Importe con letra</div>
+        <div id="impo-letra">$Importe con letra$</div>
+        <div id="total-pagar">Neto a Pagar &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$Neto a Pagar$</div>
+    </section>
+    
+    <section style="text-align:center" id="firma">
+        <div>_______________________________</div>
+        <div>Firma del Empleado</div>
+    </section>
+    <br/>
+    <section id="UUID" >
+        <p class="text-bold">Folio Fiscal:</p>
+        <p>$UUID$</p>
+        <p class="text-bold">Sello Digital del SAT:</p>
+        <p class="text-wrap" style="line-height:110%">$SELLOSAT$</p>
+    </section>
+    <br />
+    <footer>Este documento es una representación impresa de un CFDI.</footer>
+</body>
+</html>

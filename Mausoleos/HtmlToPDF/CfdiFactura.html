@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+
+<html lang="es" >
+<head>
+    <meta charset="utf-8" />
+    <title>CFDI Factura</title>
+    <!--<link href="estilos-fact.css" rel="stylesheet" type="text/css" />-->
+ <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 12px;
+            line-height: 110%;
+            margin: 0px;
+            padding: 0px;
+            width: 1080px;
+            /*height:1050px;*/
+        }
+
+        footer {
+            border: 1px solid lightgray;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        span {
+            font-weight: normal;
+        }
+
+        #encabezado {
+            margin-top: 0px;
+        }
+
+        #logo, #datos-emisor, #generales, #receptor, #forma-pago, #tot-letra-contenedor, #totales,
+        #CBB, #datos-sello, #cadena-original, #serie-hora-sat, #cadena-original {
+            display: inline-block;
+            margin: 10px;
+            vertical-align: top;
+        }
+
+        #datos-emisor {
+            width: 43%;
+            line-height: 70%;
+            text-align: center;
+        }
+
+        #generales {
+            width: 27%;
+            text-align: center;
+            line-height: 85%;
+        }
+
+        #logo {
+            width: 20%;
+            text-align: left;
+        }
+
+        #receptor-contenedor {
+            margin: 10px;
+            width: 100%;
+        }
+
+        #generales, #receptor, #forma-pago, #partidas, #tot-letra, #totales, #serie-hora-sat {
+            border: 1px solid Gray;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 0px 7px;
+        }
+
+        #seccion-totales, #datos-pac2 {
+            width: 92.5%;
+        }
+
+        #partidas {
+			margin: 18px 0px 18px 19px; 
+            text-align: center;
+			width: 90%;
+		}
+
+        #partidas, #tot-letra, #totales, #generales, #datos-emisor, #receptor, #forma-pago, #datos-pac, #datos-sello {
+            background: white;
+            box-shadow: 2px 3px 5px rgb(216, 218, 223);
+            height: auto;
+        }
+
+        #receptor {
+            width: 58%;
+            height: 10em;
+        }
+
+        #forma-pago {
+            height: 10em;
+            margin:10px 0px;
+            width: 32%;
+        }
+
+        #tabla-enc {
+            background: rgba(193, 233, 249,0.5);
+            border-radius: 10px;
+        }
+
+        #tot-letra-contenedor {
+            width: 64%;
+        }
+
+        #tot-letra {
+            margin-bottom: 25px;
+            padding: 10px 5px 10px 15px;
+			/*width: 90%;*/
+        }
+
+        #seccion-totales {
+            margin: 10px;
+            width: 98%;
+        }
+
+        #totales {
+            margin-right: 0px;
+            width: 25%;
+        }
+
+        #datos-pac2 {
+            width: 95%;
+            min-height: 200px;
+        }
+
+        #CBBimg {
+            height: 190px;
+            margin: 0px;
+            margin-left: 15px;
+            width: 190px;
+        }
+
+        #CBB {
+            margin: 3px 0px 0px 0px;
+        }
+
+        #cadena-original {
+            width: 100%;
+        }
+
+        #datos-pac2, #datos-pac, #datos-sello {
+            word-wrap: break-word;
+        }
+
+        #datos-sello, #datos-pac {
+            margin: 20px 0px 0px 10px;
+        }
+
+        #datos-sello {
+            /*float:right;*/
+            width: 75%;
+        }
+
+        #datos-pac {
+            max-width: 94%;
+            padding:10px 5px 10px 15px;
+        }
+
+
+        #t_totales td {
+            font-size: 1.2em;
+            font-weight: bold;
+            line-height: 1.2em;
+        }
+
+        .datatable {
+            /*border: 1px solid gray;*/
+            border-collapse: collapse;
+            margin: 10px;
+            width: 96%;
+        }
+
+            .datatable td {
+                border: 0px solid gray;
+                padding: 0.3em 0px;
+            }
+
+            .datatable th {
+                font-weight: bold;
+                padding: 0.3em;
+            }
+            .thCantidad,.thUnidad{
+                width: 50px;
+            }
+             .thDescripcion {
+                 width:auto;
+             }
+             .thPrecio {
+                 width:70px;
+             }
+             .thImporte {
+                 width:80px;
+             }          
+      
+        .fondo-relleno {
+            background: rgb(136, 171, 188);
+            border-radius: 7px;
+            color: white;
+            font-weight: bolder;
+            height: 1em;
+            padding-top: 7px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .negritas {
+            font-weight: bolder;
+        }
+
+        .separador {
+            background: rgb(136, 171, 188);
+            border-radius: 7px;
+            height: 10px;
+            margin: 10px;
+            width: 95%;
+        }
+
+        .text-normal {
+            font-weight: normal;
+        }
+
+        .texto-centrado {
+            text-align: center;
+        }
+
+        .texto-right {
+            padding: 0px 10px;
+            text-align: right;
+        }
+
+        .content-center {
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+<body>
+
+    <header id="encabezado">
+        <section id="logo">
+            <img src="$Logo$" title="Logo de la Empresa" height="160" width="180" />
+        </section>
+        <section id="datos-emisor">
+            <h4>$RazonSocial$</h4>
+            <h5>$RFC$</h5>
+            <p>$CalleNumero$</p>
+            <p>$Colonia$ C.P.: $CP$</p>
+            <p>$Ciudad$, $Estado$, $Pais$</p>
+            <p class="negritas">Régimen Fiscal:</p>
+            <span class="text-normal" style="line-height:113%">$RegimenFiscal$</span>
+        </section>
+        <section id="generales">
+            <p class="fondo-relleno">FACTURA</p>
+            <p>Serie: $Serie$ &nbsp;Folio: $Folio$ </p>
+            <p class="negritas">Folio Fiscal</p>
+            <p>$Folio Fiscal$</p>
+            <p class="negritas">Lugar, Fecha y hora de emisión</p>
+            <p>$EmitidoEn$</p>
+            <p>$FechaHoraEmision$</p>
+        </section>
+    </header>
+    <section id="receptor-contenedor">
+        <section id="receptor">
+            <p class="negritas"><span class="text-normal">$rRazonSocial$</span> &nbsp;<span class="negritas">RFC: </span><span>$rRFC$</span></p>
+            <p class="negritas">Domicilio: $rDomicilio$</p>
+            <p class="negritas">Colonia: <span class="text-normal">$rColonia$</span> <span class="negritas">C.P.: </span><span>$rCP$</span></p>
+            <p class="negritas">Municipio: <span class="text-normal">$rMunicipio$</span> <span class="negritas">Estado: </span><span>$rEstado$, $rPais$</span></p>
+        </section>
+        <section id="forma-pago">
+            <section class="content-center">
+                <p class="negritas">Forma de Pago: <span class="text-normal">$FormaDePago$</span></p>
+                <p class="negritas">Método de Pago: <span class="text-normal">$MetodoDePago$</span></p>
+                <p class="negritas">Cuenta: <span class="text-normal">$Cuenta$</span></p>
+                 <p class="negritas">Número de Serie del Certificado:<span class="text-normal">$noCertificado$</span></p>
+            </section>
+        </section>
+    </section>
+    <p class="separador"></p>
+
+    <section id="partidas">
+        <table class="datatable">
+            <tr id="tabla-enc2">
+                <th id="thCantidad">Cantidad</th>
+                <th id="thUnidad">Unidad de Medida</th>
+                <th id="thDescripcion">Descripción</th>
+                <th id="thPrecio">Precio Unitario</th>
+                <th id="thImporte">Importe</th>
+            </tr>
+            $partidas$
+            <!--Primera Partida-->           
+        </table>
+    </section>
+    <section id="seccion-totales">
+        <section id="tot-letra-contenedor">
+            <section id="tot-letra">
+                <p class="negritas">Total con Letra:</p>                                                
+                <p>$TotalLetra$</p>                
+            </section>
+            <section id="datos-pac">
+                <p class="negritas">Sello Digital del CFDI: <span class="text-normal" style="word-wrap: break-word;max-width:95%">$Sello Digital del CFDI$</span></p>
+                <p class="negritas">Sello del SAT: <span class="text-normal" style="word-wrap: break-word;" >$Sello del SAT$</span></p>
+            </section>
+        </section>
+        <section id="totales">
+            <table id="t_totales" class="datatable" style="margin:10px;">
+                <tr id="tabla-enc" style="background:none;">
+                    <th style="width:70%;"></th>
+                    <th style="width:30%;"></th>
+                </tr>
+                <tr>
+                    <td>SubTotal:</td>
+                    <td class="texto-right">$SubTotal$</td>
+                </tr>
+                <tr>
+                    <td>IVA ($Tasa$%):</td>
+                    <td class="texto-right">$IVA$</td>
+                </tr>
+                <tr>
+                    <td>ISR Retenido:</td>
+                    <td class="texto-right">$ISR_Retenido$</td>
+                </tr>
+                <tr>
+                    <td>IVA Retenido:</td>
+                    <td class="texto-right">$IVA_Retenido$</td>
+                </tr>
+                <tr>
+                    <td>Total:</td>
+                    <td class="texto-right" style="font-size:1.5em;">$TotalCFDI$</td>
+                </tr>
+            </table>
+        </section>            
+    </section>
+    <p class="separador"></p>
+
+    <section id="datos-pac2">
+        <section id="CBB">
+            <img id="CBBimg" src="$CBB$" title="Imagen del CBB del CFDI" />
+        </section>
+        <section id="datos-sello">
+            <p class="negritas">CadenaOriginalSAT: </p>
+            <p class="text-normal" style="word-wrap: break-word;">$CadenaOriginalSAT$</p>
+            <p class="negritas">Número de Serie del Certificado del SAT:</p>
+            <p>$CSD_SAT$</p>
+            <p class="negritas">Fecha y hora de Certificación: <span class="text-normal"> $SAT_Fecha$</span></p>
+            <p class="negritas">ESTA ES UNA REPRESENTACIÓN IMPRESA DE UN CFDI</p>
+        </section>
+    </section>
+    <p class="separador"></p>
+</body>
+</html>
